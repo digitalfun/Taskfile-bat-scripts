@@ -1,0 +1,19 @@
+REM @author florian SCHMID <fschmid81+taskfile-bat@gmail.com>
+REM @desc Append task to Taskfile-bat.
+REM @rev: 0
+:task-add-task <filename>: Add a task from a file (append textfile to Taskfile-bat)
+REM WARNING: There is no validation or anything!
+REM For example, if the task exists already in the Taskfile,
+REM it will be appended again.
+
+	IF "%1"=="add-task0" (
+		ECHO Missing argument ^<filename^>
+		GOTO :EOF
+	)
+	
+	REM append newline
+	ECHO.>>%scriptName%
+	
+	REM append file content
+    TYPE "%1" >>%scriptName%
+GOTO :EOF
