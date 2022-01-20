@@ -1,0 +1,31 @@
+REM @author fschmid81@gmail.com
+REM @desc Creates a list of files.
+REM @rev: 0
+REM @require powershell.exe, notepad.exe
+:task-files [<pattern=*.*>]: Stores filenames in a textfile ("_files.txt"). To search in subfolders use pattern "subfolder\*.*"
+	SET OUTPUT_FILE=_files.txt
+	
+	REM Arg 1: File selection filter
+	SET IN_FILTER=%1
+	REM IF Arg 1 has no value => use standard value (standard value: *.*) 
+	IF "%IN_FILTER%"=="files0" SET IN_FILTER=*.*
+	
+	REM List files in console.
+	ECHO.
+	ECHO List files ...
+	ECHO.
+	REM Console output
+	powershell.exe ls %IN_FILTER% -name -file
+	
+	REM Create list file.
+	ECHO.
+	ECHO Save list to "%OUTPUT_FILE%" ...
+	REM Store in file
+	powershell.exe ls %IN_FILTER% -name -file >"%OUTPUT_FILE%"
+	
+	REM (optional) Open file with notepad.
+	ECHO.
+	ECHO View list "%OUTPUT_FILE%" ...
+	notepad.exe "%OUTPUT_FILE%"
+	
+GOTO :EOF
