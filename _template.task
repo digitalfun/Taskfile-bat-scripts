@@ -1,6 +1,7 @@
 REM @author florian SCHMID <fschmid81+taskfile-bat@gmail.com>
 REM @desc DESCRIPTION
 REM @rev: 0
+REM @require: 
 :task-template: Description of task
 	:: example code
 	SET SHORTCUTS_PATH=C:\Shortcuts\
